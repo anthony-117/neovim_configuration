@@ -23,3 +23,18 @@ map("n", "<leader>ps", function()
 end)
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+
+local M = {}
+
+M.crates = {
+  n = {
+    ["<leader>rcu"] = {
+      function ()
+        require("crate").upgrade_all_crates()
+      end,
+      "update crates"
+    }
+  }
+}
+
+return M
