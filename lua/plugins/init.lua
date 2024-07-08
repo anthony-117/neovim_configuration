@@ -6,6 +6,14 @@ return {
       require "configs.conform"
     end,
   },
+   {
+    'mbbill/undotree',
+    lazy = false,
+    config = function()
+      -- Optional: add keybindings or custom configuration here
+      vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>', { noremap = true, silent = true })
+    end
+  },
 
   -- These are some examples, uncomment them if you want to see them work!
   -- {
