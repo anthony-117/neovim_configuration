@@ -4,7 +4,7 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "html", "cssls" }
+local servers = { "html", "cssls", "tsserver", "eslint" }
 local util = require "lspconfig/util"
 
 -- lsps with default config
@@ -16,12 +16,17 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- typescript
-lspconfig.tsserver.setup {
+-- angular
+lspconfig.angularls.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
+  cmd = { "ngserver", "--stdio", "--tsProbeLocations", "", "--ngProbeLocations", "" },
+  filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
+  root_dir = util.root_pattern "angular.json",
+  settings = {},
 }
+
 -- rust
 lspconfig.rust_analyzer.setup {
   on_attach = on_attach,
@@ -38,7 +43,7 @@ lspconfig.rust_analyzer.setup {
       },
       checkOnSave = {
         command = "clippy",
-      }
+      },
     },
   },
 }
