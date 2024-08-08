@@ -14,14 +14,6 @@ map("n", "N", "Nzzzv")
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
-local builtin = require('telescope.builtin')
-
-
-map("n", "<leader>ps", function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ")})
-
-end)
-
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 local M = {}

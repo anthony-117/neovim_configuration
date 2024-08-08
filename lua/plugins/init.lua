@@ -1,5 +1,8 @@
 return {
   {
+    "elixir-editors/vim-elixir", -- Plugin for Elixir syntax highlighting
+  },
+  {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     config = function()
@@ -70,6 +73,9 @@ return {
     opts = {
       ensure_installed = {
         "vim",
+        "elixir",
+        "eex",
+        "heex",
         "javascript",
         "typescript",
         "lua",

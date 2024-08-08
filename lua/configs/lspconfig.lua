@@ -27,6 +27,22 @@ lspconfig.angularls.setup {
   settings = {},
 }
 
+-- elixir
+lspconfig.elixirls.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  cmd = { "elixir-ls" },
+  filetypes = { "elixir", "eelixir", "heex", "surface" },
+  root_dir = util.root_pattern(".git", "mix.exs"),
+  settings = {
+    elixirLS = {
+      dialyzerEnabled = true,
+      fetchDeps = false,
+    }
+  },
+}
+
 -- rust
 lspconfig.rust_analyzer.setup {
   on_attach = on_attach,
