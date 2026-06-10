@@ -4,7 +4,7 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "html", "cssls", "tsserver", "eslint" }
+local servers = { "html", "cssls", "ts_ls", "eslint" }
 local util = require "lspconfig/util"
 
 -- lsps with default config
