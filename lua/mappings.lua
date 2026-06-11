@@ -12,7 +12,10 @@ map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
+map("n", "<leader>tt", ":tabnew | terminal<CR>")
 map("i", "jk", "<ESC>")
+
+map("t", "jk", [[<C-\><C-n>]])
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 

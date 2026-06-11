@@ -1,25 +1,18 @@
--- EXAMPLE
 local on_attach = require("nvchad.configs.lspconfig").on_attach
-local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
-
 local lspconfig = require "lspconfig"
 local servers = { "html", "cssls", "ts_ls", "eslint" }
 local util = require "lspconfig/util"
 
--- lsps with default config
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
-    on_init = on_init,
     capabilities = capabilities,
   }
 end
 
--- angular
 lspconfig.angularls.setup {
   on_attach = on_attach,
-  on_init = on_init,
   capabilities = capabilities,
   cmd = { "ngserver", "--stdio", "--tsProbeLocations", "", "--ngProbeLocations", "" },
   filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
@@ -27,10 +20,8 @@ lspconfig.angularls.setup {
   settings = {},
 }
 
--- elixir
 lspconfig.elixirls.setup {
   on_attach = on_attach,
-  on_init = on_init,
   capabilities = capabilities,
   cmd = { "elixir-ls" },
   filetypes = { "elixir", "eelixir", "heex", "surface" },
@@ -43,7 +34,6 @@ lspconfig.elixirls.setup {
   },
 }
 
--- rust
 lspconfig.rust_analyzer.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -59,6 +49,21 @@ lspconfig.rust_analyzer.setup {
       },
       checkOnSave = {
         command = "clippy",
+      },
+    },
+  },
+}
+
+lspconfig.svelte.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "svelte" },
+  root_dir = util.root_pattern("svelte.config.js", "svelte.config.ts", "package.json", ".git"),
+  settings = {
+    svelte = {
+      plugin = {
+        html = { completions = { enable = true, emmet = false } },
+        svelte = { defaultScriptLanguage = "ts" },
       },
     },
   },
